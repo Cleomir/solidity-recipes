@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Web3 from "web3";
+import "./merged-interfaces/Window";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const loadWeb3 = async () => {
+  if (window.ethereum) {
+    window.web3 = new Web3(window.ethereum);
+    await window.ethereum.enable();
+  } else if (window.web3) {
+    window.web3 = new Web3(window.web3.currentProvider);
+  } else {
+    window.alert(
+      "Non-Ethereum browser detected. You should consider trying MetaMask!"
+    );
+  }
+};
+
+const loadBlockchainData = async () => {
+  const web3: Web3 = window.web3;
+
+  const accounts = await web3.eth.getAccounts();
+
+  console.log(accounts);
+};
+
+class App extends Component {
+  async componentDidMount() {
+    await loadWeb3();
+    await loadBlockchainData();
+  }
+  render() {
+    return <div className="App"></div>;
+  }
 }
 
 export default App;
