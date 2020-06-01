@@ -1,5 +1,7 @@
-const {projectId, mnemonic} = require("./secrets.json");
 const HDWalletProvider = require("@truffle/hdwallet-provider");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 module.exports = {
   networks: {
@@ -14,8 +16,8 @@ module.exports = {
     rinkeby: {
       provider: () =>
         new HDWalletProvider(
-          mnemonic,
-          `https://rinkeby.infura.io/v3/${projectId}`
+          process.env.MNEMONIC,
+          `https://rinkeby.infura.io/v3/${process.env.PROJECTID}`
         ),
       networkId: 4,
       gasPrice: 10e9,
