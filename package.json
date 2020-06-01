@@ -1,28 +1,36 @@
 {
-  "name": "learning-zeppelin",
+  "name": "learning-blockchain",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "oz compile && mocha --exit --recursive test"
+    "test": "oz compile && mocha --exit --recursive test",
+    "build": "webpack"
   },
   "keywords": [],
-  "author": "",
+  "author": "Cleomir Machado Gomes",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
     "@openzeppelin/cli": "^2.8.2",
     "@openzeppelin/contracts": "^3.0.1",
     "@openzeppelin/test-environment": "^0.1.4",
     "@openzeppelin/test-helpers": "^0.5.5",
     "@truffle/hdwallet-provider": "^1.0.35",
+    "babel-loader": "^8.1.0",
     "chai": "^4.2.0",
     "ganache-cli": "^6.9.1",
     "mocha": "^7.2.0",
     "prettier": "^2.0.5",
-    "prettier-plugin-solidity": "^1.0.0-alpha.53"
+    "prettier-plugin-solidity": "^1.0.0-alpha.53",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   },
   "dependencies": {
     "@openzeppelin/contract-loader": "^0.6.1",
+    "dotenv": "^8.2.0",
     "web3": "^1.2.8"
   }
 }
